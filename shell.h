@@ -1,23 +1,23 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
+#include <unistd.h>
+#include <errno.h>
+#include <stdio.h>
 #include <fcntl.h>
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <stdio.h>
 
-#define END_OF_FILE -2
 #define EXIT -3
+#define END_OF_FILE -2
 
-/* Global environemnt */
+/* environemnts */
 extern char **environ;
-/* Global program name */
+/* program name */
 char *name;
-/* Global history counter */
+/* history counter */
 int hist;
 
 /**
@@ -33,8 +33,6 @@ typedef struct list_s
 
 /**
  * struct builtin_s - A new struct type defining builtin commands.
- * @name: The name of the builtin command.
- * @f: A function pointer to the builtin command's function.
  */
 typedef struct builtin_s
 {
@@ -43,10 +41,7 @@ typedef struct builtin_s
 } builtin_t;
 
 /**
- * struct alias_s - A new struct defining aliases.
- * @name: The name of the alias.
- * @value: The value of the alias.
- * @next: A pointer to another struct alias_s.
+ * struct alias_s A new struct defining aliases.
  */
 typedef struct alias_s
 {
@@ -120,15 +115,15 @@ void free_alias_list(alias_t *head);
 list_t *add_node_end(list_t **head, char *dir);
 void free_list(list_t *head);
 
-void help_all(void);
-void help_alias(void);
-void help_cd(void);
 void help_exit(void);
 void help_help(void);
 void help_env(void);
 void help_setenv(void);
 void help_unsetenv(void);
 void help_history(void);
+void help_all(void);
+void help_alias(void);
+void help_cd(void);
 
 int proc_file_commands(char *file_path, int *exe_ret);
 #endif /* _SHELL_H_ */
