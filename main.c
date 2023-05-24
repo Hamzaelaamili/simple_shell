@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * main - executes our shell
- * Return: 0(Success).
+ * Executes our shell
+ * Return to zero 0
  */
 int main(void)
 {
