@@ -6,16 +6,16 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-    unsigned int i = 0;
+    unsigned int k = 0;
 
-    while (s1[i] != '\0' && s2[i] != '\0')
+    while (s1[k] != '\0' && s2[k] != '\0')
     {
-        if (s1[i] != s2[i])
+        if (s1[k] != s2[k])
             return (1);
         i++;
     }
 
-    if (s1[i] != s2[i])
+    if (s1[k] != s2[k])
         return (1);
 
     return (0);
