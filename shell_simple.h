@@ -39,4 +39,7 @@ int _atoi(char *s);
 int shell(void);
 void _free_args(char **args);
 
+
+int _putchar(char c);
+
 #endif
