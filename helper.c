@@ -7,6 +7,7 @@ void variable_replacement(char **args, int *exe_ret);
 
 /**
  * free_args - Frees up memory taken by args.
+ * @front: a var
  * @args: A null-terminated double pointer containing commands/arguments.
  */
 void free_args(char **args, char **front)
@@ -53,6 +54,8 @@ char *get_pid(void)
 
 /**
  * get_env_value - Gets the value corresponding to an environmental variable.
+ * @beginning: a var
+ * @len: lenght
  * Description: Variables are stored in the format VARIABLE=VALUE.
  */
 char *get_env_value(char *beginning, int len)
