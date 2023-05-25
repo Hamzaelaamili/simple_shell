@@ -6,18 +6,16 @@ int create_error(char **args, int err);
 
 /**
  * num_len - Counts the digit length of a number.
- * @num: The number to measure.
- *
  * Return: The digit length.
  */
 int num_len(int num)
 {
 	unsigned int num1;
-	int len = 1;
+	int leng = 1;
 
 	if (num < 0)
 	{
-		len++;
+		leng++;
 		num1 = num * -1;
 	}
 	else
@@ -26,7 +24,7 @@ int num_len(int num)
 	}
 	while (num1 > 9)
 	{
-		len++;
+		leng++;
 		num1 /= 10;
 	}
 
@@ -35,38 +33,36 @@ int num_len(int num)
 
 /**
  * _itoa - Converts an integer to a string.
- * @num: The integer.
- *
  * Return: The converted string.
  */
 char *_itoa(int num)
 {
 	char *buffer;
-	int len = num_len(num);
-	unsigned int num1;
+	int leng = num_len(num);
+	unsigned int g;
 
-	buffer = malloc(sizeof(char) * (len + 1));
+	buffer = malloc(sizeof(char) * (leng + 1));
 	if (!buffer)
 		return (NULL);
 
-	buffer[len] = '\0';
+	buffer[leng] = '\0';
 
 	if (num < 0)
 	{
-		num1 = num * -1;
+		g = num * -1;
 		buffer[0] = '-';
 	}
 	else
 	{
-		num1 = num;
+		g = num;
 	}
 
-	len--;
+	leng--;
 	do {
-		buffer[len] = (num1 % 10) + '0';
-		num1 /= 10;
-		len--;
-	} while (num1 > 0);
+		buffer[leng] = (g % 10) + '0';
+		g /= 10;
+		leng--;
+	} while (g > 0);
 
 	return (buffer);
 }
@@ -74,9 +70,6 @@ char *_itoa(int num)
 
 /**
  * create_error - Writes a custom error message to stderr.
- * @args: An array of arguments.
- * @err: The error value.
- *
  * Return: The error value.
  */
 int create_error(char **args, int err)
