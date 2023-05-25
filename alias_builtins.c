@@ -5,10 +5,10 @@ void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 
 /**
- * Shellby_alias - Builtin command that either prints all the aliases, specific
- * aliases or sets an alias.
+ * shellby_alias - Builtin command that either prints all aliases, specific
+ * aliases, or sets an alias.
  * @args: An array of arguments.
- * @front: A double pointer to the beginning of the args.
+ * @front: A double pointer to the beginning of args.
  *
  * Return: If an error occurs - -1.
  *         Otherwise - 0.
@@ -16,7 +16,7 @@ void print_alias(alias_t *alias);
 int shellby_alias(char **args, char __attribute__((__unused__)) **front)
 {
 	alias_t *temp = aliases;
-	int d, ret = 0;
+	int i, ret = 0;
 	char *value;
 
 	if (!args[0])
@@ -28,15 +28,15 @@ int shellby_alias(char **args, char __attribute__((__unused__)) **front)
 		}
 		return (ret);
 	}
-	for (d = 0; args[d]; d++)
+	for (i = 0; args[i]; i++)
 	{
 		temp = aliases;
-		value = _strchr(args[d], '=');
+		value = _strchr(args[i], '=');
 		if (!value)
 		{
 			while (temp)
 			{
-				if (_strcmp(args[d], temp->name) == 0)
+				if (_strcmp(args[i], temp->name) == 0)
 				{
 					print_alias(temp);
 					break;
@@ -44,17 +44,17 @@ int shellby_alias(char **args, char __attribute__((__unused__)) **front)
 				temp = temp->next;
 			}
 			if (!temp)
-				ret = create_error(args + d, 1);
+				ret = create_error(args + i, 1);
 		}
 		else
-			set_alias(args[d], value);
+			set_alias(args[i], value);
 	}
 	return (ret);
 }
 
 /**
- * set_alias - Will be either set an existing the alias 'name' with the new value,
- * 'value' or creates a new alias with the 'name' and the 'value'.
+ * set_alias - Will either set an existing alias 'name' with a new value,
+ * 'value' or creates a new alias with 'name' and 'value'.
  * @var_name: Name of the alias.
  * @value: Value of the alias. First character is a '='.
  */
