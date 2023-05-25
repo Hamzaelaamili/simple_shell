@@ -34,16 +34,16 @@ By completing this project, you will gain knowledge and understanding of the fol
 - [CHAIMAA HASSOUNE](https://github.com/chaimaahassoune)
 ## Usage
 1. Clone the repository:
-'''
-git clone <repository_url> 
-'''
+
+##### git clone <repository_url> 
+
 
 2. Compile the shell program:
-''' 
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o shell
-'''
+ 
+##### gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o shell
+
 3. Run the shell:
-'''
-./shell
-'''
+
+##### ./shell
+
 4. Enter commands and interact with the shell.
