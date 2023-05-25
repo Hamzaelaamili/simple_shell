@@ -4,21 +4,22 @@ char *error_126(char **args);
 char *error_127(char **args);
 
 /**
- * Creates an error message for permission denied failures
+ * error_126 - Creates an error message for permission denied failures.
+ * @args: An array of arguments passed to the command.
  *
  * Return: The error string.
  */
 char *error_126(char **args)
 {
 	char *error, *hist_str;
-	int leng;
+	int len;
 
 	hist_str = _itoa(hist);
 	if (!hist_str)
 		return (NULL);
 
-	leng = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 24;
-	error = malloc(sizeof(char) * (leng + 1));
+	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 24;
+	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
 		free(hist_str);
@@ -45,14 +46,14 @@ char *error_126(char **args)
 char *error_127(char **args)
 {
 	char *error, *hist_str;
-	int leng;
+	int len;
 
 	hist_str = _itoa(hist);
 	if (!hist_str)
 		return (NULL);
 
-	leng = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 16;
-	error = malloc(sizeof(char) * (leng + 1));
+	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 16;
+	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
 		free(hist_str);

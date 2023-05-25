@@ -1,8 +1,8 @@
 #include "shell.h"
 
+char *error_env(char **args);
 char *error_1(char **args);
 char *error_2_exit(char **args);
-char *error_env(char **args);
 char *error_2_cd(char **args);
 char *error_2_syntax(char **args);
 /**
@@ -49,10 +49,10 @@ char *error_env(char **args)
 char *error_1(char **args)
 {
 	char *error;
-	int leng;
+	int len;
 
-	leng = _strlen(name) + _strlen(args[0]) + 13;
-	error = malloc(sizeof(char) * (leng + 1));
+	len = _strlen(name) + _strlen(args[0]) + 13;
+	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 		return (NULL);
 
@@ -66,19 +66,20 @@ char *error_1(char **args)
 /**
  * error_2_exit - Creates an error message for shellby_exit errors.
  * @args: An array of arguments passed to the command.
+ *
  * Return: The error string.
  */
 char *error_2_exit(char **args)
 {
 	char *error, *hist_str;
-	int leng;
+	int len;
 
 	hist_str = _itoa(hist);
 	if (!hist_str)
 		return (NULL);
 
-	leng = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 27;
-	error = malloc(sizeof(char) * (leng + 1));
+	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 27;
+	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
 		free(hist_str);
@@ -98,13 +99,14 @@ char *error_2_exit(char **args)
 
 /**
  * error_2_cd - Creates an error message for shellby_cd errors.
+ * @args: An array of arguments passed to the command.
  *
  * Return: The error string.
  */
 char *error_2_cd(char **args)
 {
 	char *error, *hist_str;
-	int leng;
+	int len;
 
 	hist_str = _itoa(hist);
 	if (!hist_str)
@@ -112,8 +114,8 @@ char *error_2_cd(char **args)
 
 	if (args[0][0] == '-')
 		args[0][2] = '\0';
-	leng = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 24;
-	error = malloc(sizeof(char) * (leng + 1));
+	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 24;
+	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
 		free(hist_str);
@@ -143,14 +145,14 @@ char *error_2_cd(char **args)
 char *error_2_syntax(char **args)
 {
 	char *error, *hist_str;
-	int leng;
+	int len;
 
 	hist_str = _itoa(hist);
 	if (!hist_str)
 		return (NULL);
 
-	leng = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 33;
-	error = malloc(sizeof(char) * (leng + 1));
+	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 33;
+	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
 		free(hist_str);
